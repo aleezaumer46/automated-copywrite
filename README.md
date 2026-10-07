@@ -1,8 +1,6 @@
 # ✍️ AI Copywriter Pro
 
-An AI-powered marketing copy generator built with **Streamlit** and **Groq Llama 3.3**.
-
-This application helps users create high-quality marketing content for different platforms such as **LinkedIn, Instagram, and Email** by selecting the desired tone and AI creativity settings.
+A Streamlit app that generates three platform-specific marketing copy variations with Groq's Llama 3.3 model. Choose LinkedIn, Instagram, or Email, select a tone, and adjust the model's temperature and top-p settings.
 
 ---
 
@@ -57,6 +55,35 @@ automated-copywriter/
 │
 ├── app.py
 ├── requirements.txt
-├── .env
+├── .env.example
 ├── .gitignore
 └── README.md
+```
+
+## Requirements
+
+- Python 3.10 or newer
+- A Groq API key
+
+## Run locally
+
+1. Clone the repository and open its directory.
+2. Create and activate a virtual environment:
+
+    ```powershell
+    py -m venv .venv
+    .venv\Scripts\Activate.ps1
+    ```
+
+  On macOS or Linux, use `python3 -m venv .venv` and `source .venv/bin/activate`.
+
+3. Install dependencies:
+
+    ```shell
+    python -m pip install -r requirements.txt
+    ```
+
+4. Copy `.env.example` to `.env` and add your Groq API key to `GROQ_API_KEY`.
+5. Start the app with `python -m streamlit run app.py`.
+
+Streamlit prints the local URL in the terminal. Keep `.env` private; it is excluded from Git.

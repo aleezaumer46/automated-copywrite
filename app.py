@@ -1,3 +1,4 @@
+import base64
 import streamlit as st
 import streamlit.components.v1 as components
 from groq import Groq
@@ -310,22 +311,16 @@ Instructions:
     ):
 
 
-        response = client.chat.completions.create(
-
-            model="llama-3.3-70b-versatile",
-
-            messages=[
-                {
-                    "role":"user",
-                    "content":prompt
-                }
-            ],
-
-            temperature=temperature,
-
-            top_p=top_p
-
-        )
+        try:
+            response = client.chat.completions.create(
+                model="llama-3.3-70b-versatile",
+                messages=[{"role": "user", "content": prompt}],
+                temperature=temperature,
+                top_p=top_p,
+            )
+        except Exception as error:
+            st.error(f"Could not generate copy: {error}")
+            st.stop()
 
 
 
@@ -351,12 +346,12 @@ Instructions:
 
     st.write(output)
 
-    copy_text = output.replace("\\", "\\\\").replace("`", "\\`").replace("$", "\\$")
-    
+    encoded_output = base64.b64encode(output.encode("utf-8")).decode("ascii")
+
     components.html(
         f"""
         <button
-        onclick="navigator.clipboard.writeText(`{copy_text}`)"
+        onclick="navigator.clipboard.writeText(new TextDecoder().decode(Uint8Array.from(atob('{encoded_output}'), c => c.charCodeAt(0))))"
         style="
             background-color:#4CAF50;
             color:white;
@@ -399,20 +394,8 @@ Instructions:
     pdf = FPDF()
     pdf.add_page()
     pdf.set_font("Arial", size=12)
-
-    pdf.multi_cell(
-        0,
-        10,
-        output.encode("latin-1", "ignore").decode("latin-1")
-        )
-    
-    pdf_file = "marketing_copy.pdf"
-    pdf.output(pdf_file)
-    
-    with open(pdf_file, "rb") as file:
-        pdf_bytes = file.read()
-
-    os.remove(pdf_file)
+    pdf.multi_cell(0, 10, output.encode("latin-1", "ignore").decode("latin-1"))
+    pdf_bytes = bytes(pdf.output())
 
     st.download_button(
         "📥 Download TXT",

@@ -72,6 +72,33 @@ else:
         color:#212529 !important;
     }
 
+    header[data-testid="stHeader"]{
+        background:#F8F9FA !important;
+    }
+
+    header[data-testid="stHeader"] button,
+    [data-testid="stToolbar"] button{
+        color:#212529 !important;
+    }
+
+    div[data-baseweb="select"] > div{
+        background:#FFFFFF !important;
+        border-color:#CED4DA !important;
+    }
+
+    div[data-baseweb="select"] *,
+    div[data-baseweb="popover"] [role="option"]{
+        color:#212529 !important;
+    }
+
+    div[data-baseweb="popover"] [role="option"]{
+        background:#FFFFFF !important;
+    }
+
+    div[data-baseweb="popover"] [role="option"]:hover{
+        background:#E9ECEF !important;
+    }
+
     .stTextInput input,
     .stTextArea textarea{
         background:white !important;

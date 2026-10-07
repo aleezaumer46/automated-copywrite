@@ -1,13 +1,13 @@
 # ✍️ AI Copywriter Pro
 
-A Streamlit app that generates three platform-specific marketing copy variations with Groq's Llama 3.3 model. Choose LinkedIn, Instagram, or Email, select a tone, and adjust the model's temperature and top-p settings.
+A Streamlit app that generates three platform-specific marketing copy variations with Groq's Qwen 3.8 27B model. Choose LinkedIn, Instagram, or Email, select a tone, and adjust the model's temperature and top-p settings.
 
 ---
 
 ## 🚀 Features
 
 - 🤖 AI-powered marketing copy generation
-- ⚡ Powered by Groq API + Llama 3.3 70B Versatile
+- ⚡ Powered by Groq API + Qwen 3.8 27B
 - Support for multiple platforms:
   - LinkedIn
   - Instagram
@@ -41,7 +41,7 @@ A Streamlit app that generates three platform-specific marketing copy variations
 - Python
 - Streamlit
 - Groq API
-- Llama 3.3 70B Versatile
+- Qwen 3.8 27B
 - Python-dotenv
 - FPDF
 - Streamlit Copy to Clipboard
